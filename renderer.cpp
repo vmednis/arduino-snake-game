@@ -21,7 +21,7 @@ namespace Renderer {
     return 1.0 / ((time_total - time_last) / 1000000.0);
   }
 
-  void renderFrame() {
+  void renderBorder() {
     u8g2.drawFrame(0, 0, 128, 64); 
   }
   

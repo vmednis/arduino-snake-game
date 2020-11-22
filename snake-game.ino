@@ -32,7 +32,7 @@ void loop() {
   if(resetFruit) fruit.randomize(&snake);
   
   Renderer::startFrame();
-  Renderer::renderFrame();
+  Renderer::renderBorder();
   Renderer::renderSnake(&snake);
   Renderer::renderFruit(&fruit);
   if(!snake.isAlive()) Renderer::renderGameOver(&snake);

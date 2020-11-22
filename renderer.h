@@ -7,7 +7,7 @@
 
 namespace Renderer {
   void initialize();
-  void renderFrame();
+  void renderBorder();
   void renderSnake(Snake *snake);
   void renderFruit(Fruit *fruit);
   void renderGameOver(Snake *snake);
