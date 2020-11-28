@@ -1,6 +1,8 @@
 #pragma once
-#include "Arduino.h"
 
+#include "main.h"
+
+#define LONG_PRESS 3000;
 //unfortunately for interrupts to work buttons have to be defined globally.
 #define CREATE_INTERRUPT_BUTTON(NAME, PIN) \
 void _## NAME ##HandleISR(); \

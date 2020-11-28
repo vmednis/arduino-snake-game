@@ -1,5 +1,4 @@
 #include "fruit.h"
-#include "Arduino.h"
 #include "position.h"
 
 Fruit::Fruit(Snake * snake) {

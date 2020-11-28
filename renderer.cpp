@@ -1,5 +1,4 @@
 #include "renderer.h"
-#include "Arduino.h"
 #include "U8g2lib.h"
 
 #define CELL_SIZE 8
