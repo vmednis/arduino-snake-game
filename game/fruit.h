@@ -2,7 +2,11 @@
 
 #include "snake.h"
 #include "position.h"
-//#define uint8_t int
+#include "snake_start.h"
+#ifdef ARDUINO
+#include "Arduino.h"
+#endif
+
 class Fruit {
   public:
     Fruit(Snake * snake);

@@ -1,26 +1,33 @@
-#include "stm32f3xx_hal.h"
-
 #include "snake_start.h"
-#include "button.h"
-#include "snake_start.h"
+#include "game/button.h"
 #include "game/fruit.h"
 #include "renderer.h"
+#ifndef ARDUINO
+#include "stm32f3xx_hal.h"
+#include <stdlib.h>
+#endif
 
-
+#ifdef ARDUINO
+CREATE_INTERRUPT_BUTTON(buttonEnd, 1);
+CREATE_INTERRUPT_BUTTON(buttonUp, 23);
+CREATE_INTERRUPT_BUTTON(buttonDown, 19);
+CREATE_INTERRUPT_BUTTON(buttonLeft, 18);
+CREATE_INTERRUPT_BUTTON(buttonRight, 17);
+#else
 Button buttonUp;
 Button buttonDown;
 Button buttonLeft;
 Button buttonRight;
 Button buttonEnd;
-
+#endif
 Snake snake;
 Fruit fruit(&snake);
 
-/*void rend(void* u8g2){
-	//Renderer::initialize(u8g2);
-}
-*/
+
 void snake_start(void* u8g2) {
+#ifdef ARDUINO
+	Renderer::initialize();
+#else
 	Renderer::initialize(u8g2);
 	while(1){
 		if (buttonEnd.isPressed()) 		break;
@@ -47,9 +54,12 @@ void snake_start(void* u8g2) {
 		
 		delay(150);
 	}
-  
+#endif
 }
 
+//This function is called by STM32 button interrupt with proper parameter corresponding the right button
+//You can use this approach or make yours
+#ifndef ARDUINO
 void snake_button(short control){
 	if(control == END) 		buttonEnd.pressed = true;
 	if(control == UP)		buttonUp.pressed = true;
@@ -57,11 +67,32 @@ void snake_button(short control){
 	if(control == RIGHT)	buttonRight.pressed = true;
 	if(control == LEFT)		buttonLeft.pressed = true;
 }
-
+#endif
+//Fill these functions
 void delay(int delay){
+#ifdef ARDUINO
+	delay(delay);
+#else
 	HAL_Delay(delay);
+#endif
 }
 
-long millis(){
-	return HAL_GetTick();
+//Fill these functions
+long micros(){
+#ifdef ARDUINO
+	return micros();
+#else
+	return HAL_GetTick()*1000;
+#endif
+}
+
+//Fill these functions
+int get_random_value(int spaceCnt){
+#ifdef ARDUINO
+	return random(0, spaceCnt);
+#else
+	srand (HAL_GetTick()); //not the best
+	return rand() % spaceCnt;
+	return 0;
+#endif
 }

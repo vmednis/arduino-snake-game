@@ -5,24 +5,24 @@
  *      Author: Norbert
  */
 
-//#ifndef SRC_SNAKE_GAME_SNAKE_START_H_
-//#define SRC_SNAKE_GAME_SNAKE_START_H_
 #pragma once
 
-#include "snake_start.h"
+//#define ARDUINO
+
 
 #ifdef __cplusplus
  extern "C" {
 #endif
 
-void delay(int delay);
-extern void snake_start(void*);
+void snake_start(void*);
 void snake_button(short control);
-long millis();
-
-
 
 #ifdef __cplusplus
 }
+
+void delay(int delay);
+long millis();
+int get_random_value(int spaceCnt);
+
 #endif
 //#endif /* SRC_SNAKE_GAME_SNAKE_START_H_ */

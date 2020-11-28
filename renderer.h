@@ -17,5 +17,3 @@ namespace Renderer {
   void startFrame();
   void endFrame();
 }
-
-//∫∫void rend(void* u8g2);

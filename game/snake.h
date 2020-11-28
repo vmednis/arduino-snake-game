@@ -1,6 +1,8 @@
 #pragma once
 #include "position.h"
-
+#ifdef ARDUINO
+#include "Arduino.h"
+#endif
 
 enum Direction {
   END,

@@ -1,6 +1,8 @@
-#include <stdlib.h>
 #include "fruit.h"
 #include "position.h"
+#ifdef ARDUINO
+#include "Arduino.h"
+#endif
 
 Fruit::Fruit(Snake * snake) {
   this->randomize(snake);
@@ -19,8 +21,8 @@ void Fruit::randomize(Snake * snake) {
       }
     }
   }
-  srand (spaceCnt); //not the best
-  uint8_t targetSpace = rand() % spaceCnt;
+
+  uint8_t targetSpace = get_random_value(spaceCnt);
   spaceCnt = 0;
   for(int i = 0; i < Snake::BODY_WIDTH; i++) {
     for(int j = 0; j < Snake::BODY_HEIGHT; j++) {
