@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "fruit.h"
 #include "position.h"
 
@@ -18,8 +19,8 @@ void Fruit::randomize(Snake * snake) {
       }
     }
   }
-
-  uint8_t targetSpace = random(0, spaceCnt);
+  srand (spaceCnt); //not the best
+  uint8_t targetSpace = rand() % spaceCnt;
   spaceCnt = 0;
   for(int i = 0; i < Snake::BODY_WIDTH; i++) {
     for(int j = 0; j < Snake::BODY_HEIGHT; j++) {

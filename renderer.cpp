@@ -1,13 +1,17 @@
 #include "renderer.h"
-#include "U8g2lib.h"
 
 #define CELL_SIZE 8
+
+/*void rend(void* u8g2){
+	Renderer::initialize(u8g2);
+}*/
 
 namespace Renderer {
 
 	//u8g2_Setup_ssd1306_128x64_noname_f(&u8g2, U8G2_R0, u8x8_byte_stm32_hw_i2c, u8x8_stm32_gpio_and_delay);
-
-  void initialize() {
+	u8g2_t u8g2;
+  void initialize(void * u8) {
+	u8g2 = *(u8g2_t*)u8;
 	u8g2_InitDisplay(&u8g2);
     u8g2_SetFont(&u8g2,u8g2_font_6x10_tf);
   }
@@ -16,8 +20,8 @@ namespace Renderer {
   unsigned long time_last = 0;
   float framerate() {
     time_last = time_total;
-    time_total = micros();
-    return 1.0 / ((time_total - time_last) / 1000000.0);
+    time_total = millis();
+    return 1.0 / ((time_total - time_last) / 1000.0);
   }
 
   void renderBorder() {
@@ -45,7 +49,8 @@ namespace Renderer {
     u8g2_SetDrawColor(&u8g2,0);
     u8g2_DrawStr(&u8g2, 34, 30, "Game Over!");
     u8g2_DrawStr(&u8g2, 34, 40, "Points: ");
-    u8g2_DrawStr(&u8g2, 34, 52, snake->getPoints());
+    char c=snake->getPoints();
+    u8g2_DrawStr(&u8g2, 34, 52, &c); //its not good in that way
     u8g2_SetDrawColor(&u8g2, 1);
   }
 

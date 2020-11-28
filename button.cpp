@@ -11,10 +11,7 @@ bool Button::isPressed() {
 }
 
 
-
-void set_control(short control){
-	if(control == LEFT) 	buttonLeft.pressed = true;
-	if(control == RIGHT)	buttonRight.pressed = true;
-	if(control == UP) 	buttonLeft.pressed = true;
-	if(control == DOWN)	buttonRight.pressed = true;
+Button::Button(){
+	this->pressed = false;
 }
+

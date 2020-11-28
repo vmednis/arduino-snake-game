@@ -2,7 +2,7 @@
 
 #include "snake.h"
 #include "position.h"
-
+//#define uint8_t int
 class Fruit {
   public:
     Fruit(Snake * snake);

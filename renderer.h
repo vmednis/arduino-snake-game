@@ -1,12 +1,15 @@
 #pragma once
 
-
+#include "snake_start.h"
 #include "game/snake.h"
 #include "game/position.h"
 #include "game/fruit.h"
+#include "U8g2.h"
+
+
 
 namespace Renderer {
-  void initialize();
+  void initialize(void*);
   void renderBorder();
   void renderSnake(Snake *snake);
   void renderFruit(Fruit *fruit);
@@ -14,3 +17,5 @@ namespace Renderer {
   void startFrame();
   void endFrame();
 }
+
+//∫∫void rend(void* u8g2);

@@ -1,12 +1,17 @@
 #pragma once
 #include "position.h"
 
+
 enum Direction {
+  END,
   UP,
   LEFT,
   DOWN,
   RIGHT
 };
+
+typedef unsigned char uint8_t;
+
 
 class Snake {
   public:

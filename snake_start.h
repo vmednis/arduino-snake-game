@@ -5,14 +5,24 @@
  *      Author: Norbert
  */
 
-#ifndef SRC_SNAKE_GAME_SNAKE_START_H_
-#define SRC_SNAKE_GAME_SNAKE_START_H_
+//#ifndef SRC_SNAKE_GAME_SNAKE_START_H_
+//#define SRC_SNAKE_GAME_SNAKE_START_H_
+#pragma once
 
-#include "button.h"
 #include "snake_start.h"
-#include "game/fruit.h"
-#include "renderer.h"
+
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
+void delay(int delay);
+extern void snake_start(void*);
+void snake_button(short control);
+long millis();
 
 
 
-#endif /* SRC_SNAKE_GAME_SNAKE_START_H_ */
+#ifdef __cplusplus
+}
+#endif
+//#endif /* SRC_SNAKE_GAME_SNAKE_START_H_ */
