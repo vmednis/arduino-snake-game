@@ -1,6 +1,6 @@
 #include "button.h"
-#include "snake.h"
-#include "fruit.h"
+#include "game/snake.h"
+#include "game/fruit.h"
 #include "renderer.h"
 
 CREATE_INTERRUPT_BUTTON(buttonUp, 23);
