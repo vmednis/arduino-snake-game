@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Arduino.h"
-#include "snake.h"
-#include "position.h"
-#include "fruit.h"
+#include "game/snake.h"
+#include "game/position.h"
+#include "game/fruit.h"
 
 namespace Renderer {
   void initialize();
