@@ -5,11 +5,11 @@
 
 namespace Renderer {
 
-  U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
+	//u8g2_Setup_ssd1306_128x64_noname_f(&u8g2, U8G2_R0, u8x8_byte_stm32_hw_i2c, u8x8_stm32_gpio_and_delay);
 
   void initialize() {
-    u8g2.begin();
-    u8g2.setFont(u8g2_font_6x10_tf);
+	u8g2_InitDisplay(&u8g2);
+    u8g2_SetFont(&u8g2,u8g2_font_6x10_tf);
   }
 
   unsigned long time_total = 0;
@@ -21,7 +21,7 @@ namespace Renderer {
   }
 
   void renderBorder() {
-    u8g2.drawFrame(0, 0, 128, 64); 
+    u8g2_DrawFrame(&u8g2,0, 0, 128, 64);
   }
   
   void renderSnake(Snake *snake) {
@@ -29,7 +29,7 @@ namespace Renderer {
     for(int i = 0; i < Snake::BODY_WIDTH; i++) {
       for(int j = 0; j < Snake::BODY_HEIGHT; j++) {
         if(body[i][j] > 0) {
-          u8g2.drawBox(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+          u8g2_DrawBox(&u8g2, i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
       }
     }
@@ -37,26 +37,24 @@ namespace Renderer {
 
   void renderFruit(Fruit * fruit) {
     Position position = fruit->getPosition();
-    u8g2.drawFrame(position.x * CELL_SIZE + 1, position.y * CELL_SIZE + 1, CELL_SIZE - 2, CELL_SIZE - 2);
+    u8g2_DrawFrame(&u8g2, position.x * CELL_SIZE + 1, position.y * CELL_SIZE + 1, CELL_SIZE - 2, CELL_SIZE - 2);
   }
 
   void renderGameOver(Snake *snake) {
-    u8g2.drawBox(32, 20, 64, 22);
-    u8g2.setDrawColor(0);
-    u8g2.setCursor(34, 30);
-    u8g2.print("Game Over!");
-    u8g2.setCursor(34, 40);
-    u8g2.print("Points: ");
-    u8g2.print(snake->getPoints());
-    u8g2.setDrawColor(1);
+    u8g2_DrawBox(&u8g2, 32, 20, 64, 22);
+    u8g2_SetDrawColor(&u8g2,0);
+    u8g2_DrawStr(&u8g2, 34, 30, "Game Over!");
+    u8g2_DrawStr(&u8g2, 34, 40, "Points: ");
+    u8g2_DrawStr(&u8g2, 34, 52, snake->getPoints());
+    u8g2_SetDrawColor(&u8g2, 1);
   }
 
   void startFrame() {
-    u8g2.clearBuffer();
+    u8g2_ClearBuffer(&u8g2);
   }
 
   void endFrame() {
-    u8g2.sendBuffer();
+    u8g2_SendBuffer(&u8g2);
   }
 
 }

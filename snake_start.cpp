@@ -1,19 +1,15 @@
-#include "button.h"
-#include "snake.h"
-#include "fruit.h"
-#include "renderer.h"
+#include "snake_start.h"
 
-CREATE_INTERRUPT_BUTTON(buttonUp, 23);
-CREATE_INTERRUPT_BUTTON(buttonDown, 19);
-CREATE_INTERRUPT_BUTTON(buttonLeft, 18);
-CREATE_INTERRUPT_BUTTON(buttonRight, 17);
+Button ButtonUp;
+Button ButtonDown;
+Button ButtonLeft;
+Button ButtonRight;
 
 Snake snake;
 Fruit fruit(&snake);
 
-
-void loop() {
-	Renderer::initialize();
+void snake() {
+	//Renderer::initialize();
 	while(1){
 		if (buttonUp.isPressed()) snake.turn(UP);
 		if (buttonDown.isPressed()) snake.turn(DOWN);

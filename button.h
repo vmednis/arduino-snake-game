@@ -1,18 +1,11 @@
 #pragma once
 
-#include "main.h"
 
-#define LONG_PRESS 3000;
-//unfortunately for interrupts to work buttons have to be defined globally.
-#define CREATE_INTERRUPT_BUTTON(NAME, PIN) \
-void _## NAME ##HandleISR(); \
-void IRAM_ATTR _## NAME ##ISR() { \
-  _## NAME ##HandleISR(); \
-}; \
-Button NAME(PIN, _## NAME ##ISR); \
-void _## NAME ##HandleISR() { \
-  NAME.handleInterrupt(); \
-};
+#define LONG_PRESS	3000
+#define	UP			1
+#define	DOWN		2
+#define	LEFT		3
+#define	RIGHT		4
 
 class Button {
   public:
