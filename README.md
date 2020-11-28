@@ -1,6 +1,6 @@
 # Snake Game
 
-** Snake game running various mikroprocessor, displayed with u8g2 driver on any small display, developed in C++. **
+**Snake game running various mikroprocessor, displayed with u8g2 driver on any small display, developed in C++.**
 
 This repository is forked from [arduino-snake-game](https://github.com/vmednis/arduino-snake-game). For more info check it.
 Main modifications was porting it to STM32 microcontroller, also it has simpler files structure and much better portability for any low cost microprocessor system.
