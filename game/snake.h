@@ -1,13 +1,19 @@
 #pragma once
-#include "Arduino.h"
 #include "position.h"
+#ifdef ARDUINO
+#include "Arduino.h"
+#endif
 
 enum Direction {
+  END,
   UP,
   LEFT,
   DOWN,
   RIGHT
 };
+
+typedef unsigned char uint8_t;
+
 
 class Snake {
   public:

@@ -1,4 +1,3 @@
-#include "Arduino.h"
 #include "position.h"
 
 Position::Position(uint8_t x, uint8_t y) {

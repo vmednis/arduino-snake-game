@@ -1,4 +1,10 @@
 #pragma once
+
+#define LONG_PRESS	3000
+
+#ifndef ARDUINO
+typedef unsigned char uint8_t;
+#else
 #include "Arduino.h"
 
 //unfortunately for interrupts to work buttons have to be defined globally.
@@ -11,12 +17,12 @@ Button NAME(PIN, _## NAME ##ISR); \
 void _## NAME ##HandleISR() { \
   NAME.handleInterrupt(); \
 };
+#endif
 
 class Button {
   public:
-    Button(uint8_t pin, void (*isr)());
+    Button();
     void handleInterrupt();
     bool isPressed();
-  private:  
     bool pressed = false;
 };

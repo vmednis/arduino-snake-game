@@ -1,12 +1,15 @@
 #pragma once
 
-#include "Arduino.h"
-#include "snake.h"
-#include "position.h"
-#include "fruit.h"
+#include "snake_start.h"
+#include "game/snake.h"
+#include "game/position.h"
+#include "game/fruit.h"
+#include "U8g2.h"
+
+
 
 namespace Renderer {
-  void initialize();
+  void initialize(void*);
   void renderBorder();
   void renderSnake(Snake *snake);
   void renderFruit(Fruit *fruit);
