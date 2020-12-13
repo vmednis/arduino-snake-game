@@ -67,7 +67,6 @@ namespace Renderer {
 	u8g2_t u8g2;
   void initialize(void * u8) {
 	u8g2 = *(u8g2_t*)u8;
-	u8g2_InitDisplay(&u8g2);
     u8g2_SetFont(&u8g2,u8g2_font_6x10_tf);
   }
 
@@ -104,8 +103,9 @@ namespace Renderer {
     u8g2_SetDrawColor(&u8g2,0);
     u8g2_DrawStr(&u8g2, 34, 30, "Game Over!");
     u8g2_DrawStr(&u8g2, 34, 40, "Points: ");
-    char c=snake->getPoints();
-    u8g2_DrawStr(&u8g2, 34, 52, &c); //its not good in that way
+    char c[4];
+    intToStr(snake->getPoints(), c, 2);
+    u8g2_DrawStr(&u8g2, 76, 40, c); //its not good in that way
     u8g2_SetDrawColor(&u8g2, 1);
   }
 
@@ -117,5 +117,44 @@ namespace Renderer {
     u8g2_SendBuffer(&u8g2);
   }
 
+}
+
+// Reverses a string 'str' of length 'len'
+void reverse(char* str, int len)
+{
+    int i = 0, j = len - 1, temp;
+    while (i < j) {
+        temp = str[i];
+        str[i] = str[j];
+        str[j] = temp;
+        i++;
+        j--;
+    }
+}
+
+// Converts a given integer x to string str[].
+// d is the number of digits required in the output.
+// If d is more than the number of digits in x,
+// then 0s are added at the beginning.
+int intToStr(int x, char str[], int d)
+{
+    int i = 0;
+    if(x == 0) {
+    	str[0] = '0';
+    	i++;
+    }
+    while (x) {
+        str[i++] = (x % 10) + '0';
+        x = x / 10;
+    }
+
+    // If number of digits required is more, then
+    // add 0s at the beginning
+    while (i < d)
+        str[i++] = '0';
+
+    reverse(str, i);
+    str[i] = '\0';
+    return i;
 }
 #endif

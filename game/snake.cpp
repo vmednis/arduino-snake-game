@@ -45,6 +45,18 @@ void Snake::turn(Direction direction) {
   if((direction + 2) % 4 != this->direction) {
     this->turnDirection = direction;  
   }
+  if(direction == RIGHT){
+	  if(this->direction == RIGHT)	this->turnDirection = DOWN;
+	  if(this->direction == LEFT)	this->turnDirection = UP;
+	  if(this->direction == UP)		this->turnDirection = RIGHT;
+	  if(this->direction == DOWN)	this->turnDirection = LEFT;
+  }
+  if(direction == LEFT){
+	  if(this->direction == RIGHT)	this->turnDirection = UP;
+	  if(this->direction == LEFT)	this->turnDirection = DOWN;
+	  if(this->direction == UP)		this->turnDirection = LEFT;
+	  if(this->direction == DOWN)	this->turnDirection = RIGHT;
+  }
 }
 
 void Snake::advance() {
@@ -75,6 +87,16 @@ void Snake::grow() {
       }
     }
   }
+}
+
+void Snake::restart(){
+	this->alive = true;
+	this->body[Snake::BODY_WIDTH / 4 - 1][Snake::BODY_HEIGHT / 2] = 1;
+	this->body[Snake::BODY_WIDTH / 4][Snake::BODY_HEIGHT / 2] = 2;
+	this->head.x = Snake::BODY_WIDTH / 4;
+	this->head.y = Snake::BODY_HEIGHT / 2;
+	this->direction = RIGHT;
+	this->turnDirection = this->direction;
 }
 
 const bool Snake::isAlive() {

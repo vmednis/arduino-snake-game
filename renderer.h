@@ -17,3 +17,5 @@ namespace Renderer {
   void startFrame();
   void endFrame();
 }
+
+int intToStr(int x, char str[], int d);

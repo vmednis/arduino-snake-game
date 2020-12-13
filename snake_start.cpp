@@ -28,6 +28,9 @@ void snake_start(void* u8g2) {
 #ifdef ARDUINO
 	Renderer::initialize();
 #else
+	if(!snake.isAlive()) {
+		snake.restart();
+	}
 	Renderer::initialize(u8g2);
 	while(1){
 		if (buttonEnd.isPressed()) 		break;
@@ -52,7 +55,7 @@ void snake_start(void* u8g2) {
 		if(!snake.isAlive()) Renderer::renderGameOver(&snake);
 		Renderer::endFrame();
 		
-		delay(150);
+		delay(500);
 	}
 #endif
 }
@@ -95,4 +98,5 @@ int get_random_value(int spaceCnt){
 	return rand() % spaceCnt;
 	return 0;
 #endif
+
 }

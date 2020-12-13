@@ -24,6 +24,7 @@ class Snake {
     void turn(Direction direction);
     void advance();
     void grow();
+    void restart();
 
     const bool isAlive();
     const uint8_t getPoints();
