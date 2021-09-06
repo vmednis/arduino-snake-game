@@ -4,7 +4,7 @@
 #include "game/snake.h"
 #include "game/position.h"
 #include "game/fruit.h"
-#include "U8g2.h"
+#include "u8g2.h"
 
 
 
