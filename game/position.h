@@ -1,5 +1,10 @@
-#include "Arduino.h"
 #pragma once
+
+#ifndef ARDUINO
+typedef unsigned char uint8_t;
+#else
+#include "Arduino.h"
+#endif
 
 class Position {
   public:

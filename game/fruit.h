@@ -2,6 +2,10 @@
 
 #include "snake.h"
 #include "position.h"
+#include "snake_start.h"
+#ifdef ARDUINO
+#include "Arduino.h"
+#endif
 
 class Fruit {
   public:
